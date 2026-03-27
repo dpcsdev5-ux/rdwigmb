@@ -1,0 +1,31 @@
+{
+  "name": "disparos-baileys-square",
+  "version": "1.0.0",
+  "description": "Sistema de disparo de mensagens WhatsApp com Baileys e Firebase",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "baileys",
+    "firebase",
+    "disparos"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "6.5.0",
+    "cors": "2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "4.18.2",
+    "firebase-admin": "12.0.0",
+    "qrcode": "1.5.3",
+    "qrcode-terminal": "0.12.0"
+  },
+  "engines": {
+    "node": "18.x || 20.x"
+  }
+}

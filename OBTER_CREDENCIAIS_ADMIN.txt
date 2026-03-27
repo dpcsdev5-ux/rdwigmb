@@ -1,0 +1,65 @@
+========================================
+CREDENCIAIS QUE FALTAM - PASSO A PASSO
+========================================
+
+DADOS QUE JÁ TEMOS ✅
+====================
+Project ID: igmbinstituto
+Database URL: igmbinstituto.firebaseio.com
+Auth URIs: Configuradas
+
+DADOS QUE FALTAM 🔒
+===================
+FIREBASE_PRIVATE_KEY_ID
+FIREBASE_PRIVATE_KEY
+FIREBASE_CLIENT_EMAIL
+FIREBASE_CLIENT_ID
+
+HOW TO GET
+==========
+
+1️⃣ Abra esta URL diretamente:
+   https://console.firebase.google.com/project/igmbinstituto/settings/serviceaccounts/adminsdk
+
+2️⃣ Na página que abrir:
+   - Você verá "Contas de Serviço"
+   - Procure por "Python" ou qualquer outra linguagem
+   - Clique em "Gerar nova chave privada"
+   - Um arquivo JSON será baixado
+
+3️⃣ Abra o arquivo JSON com Bloco de Notas (notepad)
+
+4️⃣ Procure por estas 4 linhas e copie os valores:
+
+   "private_key_id": "fbsvc495f67aab6d7e8f9g0h1i2j3k4l"
+   ↓ Copie para: FIREBASE_PRIVATE_KEY_ID
+
+
+   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkq...\n-----END PRIVATE KEY-----\n"
+   ↓ Copie para: FIREBASE_PRIVATE_KEY
+   ⚠️ CUIDADO: Copie TUDO, incluindo \n
+
+
+   "client_email": "firebase-adminsdk-fbsvc@igmbinstituto.iam.gserviceaccount.com"
+   ↓ Copie para: FIREBASE_CLIENT_EMAIL
+
+
+   "client_id": "106487541876543210"
+   ↓ Copie para: FIREBASE_CLIENT_ID
+
+5️⃣ Cole aqui os 4 valores:
+
+FIREBASE_PRIVATE_KEY_ID=[VALORCOPIA]
+FIREBASE_PRIVATE_KEY=[VALOR-COMPLETO]
+FIREBASE_CLIENT_EMAIL=[VALORCOPIA]
+FIREBASE_CLIENT_ID=[VALORCOPIA]
+
+6️⃣ UPDATE nos arquivos:
+   - .env (para local testing)
+   - ENV_VARIABLES.txt (para Square Cloud)
+
+PRONTO! 🎉
+===========
+Seus 4 + 6 = 10 variáveis estarão completas!
+
+========================================

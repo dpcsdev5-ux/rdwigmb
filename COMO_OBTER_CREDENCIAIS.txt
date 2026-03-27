@@ -1,0 +1,144 @@
+========================================
+GUIA COMPLETO - OBTER CREDENCIAIS FIREBASE
+========================================
+
+Siga passo a passo para obter todas as informações
+
+========================================
+PASSO 1: Acessar Firebase Console
+========================================
+
+1. Abra: https://console.firebase.google.com/
+2. Faça login com sua conta Google
+3. Selecione o projeto: igmbinstituto
+
+========================================
+PASSO 2: Gerar FIREBASE_PRIVATE_KEY_ID e FIREBASE_PRIVATE_KEY
+========================================
+
+1. No Firebase Console, clique em ⚙️ (engrenagem) no topo
+2. Selecione: "Configurações do Projeto"
+3. Clique na aba: "Contas de Serviço"
+4. Clique no botão: "Gerar nova chave privada"
+5. Um arquivo JSON será baixado (ex: igmbinstituto-xxxxx.json)
+6. Abra o arquivo JSON com um editor de texto
+
+========================================
+PASSO 3: Extrair as Informações do JSON
+========================================
+
+Abra o arquivo JSON e procure por estes campos:
+
+├─ "type": "service_account" ✓ (Ignorar)
+├─ "project_id": "igmbinstituto" ✓ (Este é seu FIREBASE_PROJECT_ID)
+├─ "private_key_id": "abc123..." ← FIREBASE_PRIVATE_KEY_ID
+├─ "private_key": "-----BEGIN..." ← FIREBASE_PRIVATE_KEY (COPIE INTEIRA!)
+├─ "client_email": "firebase-adminsdk@..." ← FIREBASE_CLIENT_EMAIL
+├─ "client_id": "123456789" ← FIREBASE_CLIENT_ID
+├─ "auth_uri": "https://accounts.google.com/o/oauth2/auth" ✓ (Já tem)
+├─ "token_uri": "https://oauth2.googleapis.com/token" ✓ (Já tem)
+├─ "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs" ✓ (Já tem)
+└─ "database_url": "https://seu-projeto.firebaseio.com" (Pode não ter, use como está)
+
+========================================
+EXEMPLO DO JSON (Como ficará)
+========================================
+
+{
+  "type": "service_account",
+  "project_id": "igmbinstituto",
+  "private_key_id": "fbsvc495f67aab6d7e8f9g0h1i2j3k4l",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7...\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@igmbinstituto.iam.gserviceaccount.com",
+  "client_id": "106487541876543210",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40igmbinstituto.iam.gserviceaccount.com"
+}
+
+========================================
+PASSO 4: PREENCHIMENTO DAS VARIÁVEIS
+========================================
+
+FIREBASE_PROJECT_ID=igmbinstituto
+↑ Copie de: "project_id"
+
+FIREBASE_PRIVATE_KEY_ID=fbsvc495f67aab6d7e8f9g0h1i2j3k4l
+↑ Copie de: "private_key_id"
+
+FIREBASE_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7...\n-----END PRIVATE KEY-----\n
+↑ Copie de: "private_key" (COPIE INTEIRA!)
+⚠️ Importante: Tem quebras de linha (\n) dentro - COPIE DO JEITO QUE ESTÁ
+
+FIREBASE_CLIENT_EMAIL=firebase-adminsdk-fbsvc@igmbinstituto.iam.gserviceaccount.com
+↑ Copie de: "client_email"
+
+FIREBASE_CLIENT_ID=106487541876543210
+↑ Copie de: "client_id"
+
+PORT=7373
+↑ Deixe como está
+
+FIREBASE_AUTH_URI=https://accounts.google.com/o/oauth2/auth
+↑ Deixe como está
+
+FIREBASE_TOKEN_URI=https://oauth2.googleapis.com/token
+↑ Deixe como está
+
+FIREBASE_AUTH_PROVIDER_CERT_URL=https://www.googleapis.com/oauth2/v1/certs
+↑ Deixe como está
+
+FIREBASE_DATABASE_URL=https://igmbinstituto.firebaseio.com
+↑ Deixe como está
+
+========================================
+PASSO 5: Adicionar no Square Cloud
+========================================
+
+1. Acesse: https://squarecloud.app/dashboard
+2. Clique em seu projeto
+3. Vá em: Settings → Environment Variables
+4. Clique em: Add Variable (ou similar)
+5. Para cada variável:
+   - Nome: Copie à esquerda do =
+   - Valor: Copie à direita do =
+6. Clique em SAVE
+
+========================================
+⚠️ CUIDADOS IMPORTANTES
+========================================
+
+1. PRIVATE_KEY tem quebras de linha:
+   ❌ NÃO remova as \n
+   ✅ COPIE exatamente como está no JSON
+
+2. Sensibilidade a espaços:
+   ❌ Não adicione espaços antes/depois
+   ✅ Copie e cole direto
+
+3. Segurança:
+   ❌ Nunca compartilhe estas credenciais
+   ❌ Nunca faça commit no Git
+   ✅ Só configure no Dashboard do Square Cloud
+
+4. Se algo der errado:
+   - Regenere a chave no Firebase
+   - Tente novamente
+   - Verifique se não tem espaços extras
+
+========================================
+CHECKLIST FINAL
+========================================
+
+[ ] Baixei o arquivo JSON do Firebase
+[ ] Abri o arquivo e consegui ver os dados
+[ ] Copiei FIREBASE_PROJECT_ID
+[ ] Copiei FIREBASE_PRIVATE_KEY_ID
+[ ] Copiei FIREBASE_PRIVATE_KEY (inteira com \n)
+[ ] Copiei FIREBASE_CLIENT_EMAIL
+[ ] Copiei FIREBASE_CLIENT_ID
+[ ] Adicionei todas as 10 variáveis no Square Cloud
+[ ] Cliquei SAVE
+
+========================================
